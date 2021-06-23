@@ -368,3 +368,150 @@ def generateDocument(characters, document):
 ```
 
 In the above solution it is created a hash map with the counts of each character. The first for loop created this count. Then, it checks each character in the document string, verifying if the iterated character does not exists in the map or its count is 0 (it exists but there is no enough occurrences to generate the document).
+
+<br>
+<br>
+<br>
+
+___
+
+<br>
+<br>
+<br>
+
+
+# Problem 4
+
+
+Write a function that takes in a non-empty string and that returns a boolean
+representing whether the string is a palindrome.
+
+A palindrome is defined as a string that's written the same forward and
+backward. Note that single-character strings are palindromes.
+
+<br>
+
+Input example: 
+```
+string = "abcdcba"
+```
+
+Output example: 
+```
+True
+```
+
+<br>
+
+
+___
+
+<br>
+
+### Solution 1 (Nice way):
+
+```python
+def isPalindrome(string):
+	len_string = len(string) - 1
+	len_half_string = len_string // 2
+	parts = string.split(string[len_half_string])
+	if parts[0] == parts[-1][::-1]:
+		return True
+	return False
+```
+
+It splits the string in the middle, getting the left and the right part. Then it checks if the first part is equal to the reverse of the second part, see:
+
+```
+raw string = abcdbca
+
+           L         R
+splited = [abc, d, cba]
+
+if L == the reverse of R (abc)? Yes
+```
+
+
+<br>
+
+
+___
+
+<br>
+
+### Solution 2
+
+```python
+def isPalindrome(string):
+    l = 0
+	r = -1
+	
+	len_half_str = len(string) // 2
+	
+	while l < len_half_str:
+		l_char = string[l]
+		r_char = string[r]
+		
+		if l_char != r_char:
+			return False
+		
+		l += 1
+		r -= 1
+		
+	return True
+```
+
+In this solution we assign to pointers, one to the left part and another to the right part, then while the left pointer in less than the len of half of the string, we check if the left pointer and the right pointer are different, if yes, we return False because if they are different, the string is not a palindrome. After this check we move the left pointer forward and the right pointer backward to keep track of the other characters. After checking all the characters, if none of them are different, then we return True. See a visual example:
+
+```
+L           R
+a b c d c b a
+
+L == R? Yes.
+
+  L       R
+a b c d c b a
+
+L == R? Yes. Then keep on doing this until check every character.
+```
+
+<br>
+
+
+___
+
+<br>
+
+### Solution 3 (The best one)
+
+```python
+def isPalindrome(string):
+    r_string = string[::-1]
+	
+	if string == r_string:
+		return True
+	return False
+```
+
+Just reverse the string and check if the reversed is equal the normal, thats what we do in our mind when we see a palindrome word :) Quick and easy.
+
+<br>
+
+
+___
+
+<br>
+
+### Solution 4 (A recursive mode)
+
+```python
+def isPalindrome(string, first_char=0):
+    last_char = len(string) - 1 - first_char
+	
+	if first_char >= last_char:
+		return True
+
+	return string[first_char] == string[last_char] and isPalindrome(string, first_char + 1)
+```
+
+First it set two pointers, one for the first character and another for the last, then it checks if every character were checked, returning True if yes. Otherwise, it returns a boolean condition checking if both pointers are equal and calling itself again. If both pointers are different, then it will return False.
