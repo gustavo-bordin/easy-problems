@@ -260,3 +260,111 @@ def firstNonRepeatingCharacter(string):
 
 This one is simple too, it creates a hash map with all the characters of the string. This hash map is going to get the character as key and the times this character appears in the string as value. Then after inserting all the characters, it iterates the string again checking if the iterated character appears only once, if yes then returns its index, if not, return -1 at the end of the loops.
 
+<br>
+<br>
+<br>
+
+___
+
+<br>
+<br>
+<br>
+
+
+# Problem 3
+
+You're given a string of available characters and a string representing a
+document that you need to generate. Write a function that determines if you
+can generate the document using the available characters. If you can generate
+the document, your function should return true, otherwise it should return false
+
+You're only able to generate the document if the frequency of unique
+characters in the characters string is greater than or equal to the frequency
+of unique characters in the document string. For example, if you're given characters = "abcabc" and document = "aabbccc" you cannot generate the document because you're missing one `c`
+
+The document that you need to create may contain any characters, including
+special characters, capital letters, numbers, and spaces.
+
+<br>
+
+Input example: 
+```
+characters = "da ab e r xis aca de bra"
+document = "abracadabra"
+```
+
+Output example: 
+```
+True
+```
+
+
+<br>
+
+
+___
+
+<br>
+
+### Solution 1 (A very simple one):
+
+```python
+def generateDocument(characters, document):
+	for char in document:
+		if characters.count(char) < document.count(char):
+			return False
+	return True
+```
+
+It iterates the characters counting if the iterated one appears less in characters than it appears in document. If so, then the result if false, because we are not able to generate the document if we don't have all the characters. After the loop it returns True, because if there is no lefting character in characters string, then we have everything we need to generate.
+
+<br>
+
+___
+
+<br>
+
+### Solution 2 (A very simple one faster edition)
+
+```python
+def generateDocument(characters, document):
+	alreadyIterated = set()
+	for char in document:
+		if char not in alreadyIterated:
+			if characters.count(char) < document.count(char):
+				return False
+			alreadyIterated.add(char)
+			
+	return True
+```
+
+It is the same as solution 1, but it adds the iterated char in a set in order to do not iterate the same char multiple times, it saves time, that's why it is faster :-)
+
+<br>
+
+___
+
+<br>
+
+### Solution 3 (The famous hash map):
+
+```python
+def generateDocument(characters, document):
+	character_counts = {}
+	
+	for character in characters:
+		if character not in character_counts:
+			character_counts[character] = 0
+		
+		character_counts[character] += 1
+	
+	for character in document:
+		if character not in character_counts or character_counts[character] == 0:
+			return False
+		
+		character_counts[character] -= 1
+		
+	return True
+```
+
+In the above solution it is created a hash map with the counts of each character. The first for loop created this count. Then, it checks each character in the document string, verifying if the iterated character does not exists in the map or its count is 0 (it exists but there is no enough occurrences to generate the document).
