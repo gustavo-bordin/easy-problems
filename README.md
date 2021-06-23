@@ -1,3 +1,30 @@
+# Summary
+- [Problem 1](#p1)
+  - [Solution 1](#p1s1)
+  - [Solution 2](#p1s2)
+  - [Solution 3](#p1s3)
+- [Problem 2](#p2)
+  - [Solution 1](#p2s1)
+  - [Solution 2](#p2s2)
+  - [Solution 3](#p2s3)
+- [Problem 3](#p3)
+  - [Solution 1](#p3s1)
+  - [Solution 2](#p3s2)
+  - [Solution 3](#p3s3)
+- [Problem 4](#p4)
+  - [Solution 1](#p4s1)
+  - [Solution 2](#p4s2)
+  - [Solution 3](#p4s3)
+  - [Solution 4](#p4s4)
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div id="p1">
+
 # Problem 1
 
 Write a function that takes in a non-empty array of distinct integers and an
@@ -25,6 +52,7 @@ Output example:
 ```
 [5, 13]
 ```
+</div>
 
 <br>
 
@@ -33,6 +61,7 @@ ___
 <br>
 
 
+<div id="p1s1">
 
 #### Solution 1 (Simple and direct):
 
@@ -47,6 +76,7 @@ def twoNumberSum(array, targetSum):
 ```
 
 In the above solution we go through the most simple solution; iterate the array twice, the first time getting a number and the second time verifying if the first number plus the second number is equal to the target sum, returning these two if yes. If there is no matching sum, them it will return an empty array at the end of the loop.
+</div>
 
 <br>
 
@@ -54,8 +84,9 @@ ___
 
 <br>
 
+<div id="p1s2">
 
-#### Solution 2 (A bit faster):
+#### Solution 2 (A bit faster): <a name="p2"></a>
 
 ```python
 def twoNumberSum(array, targetSum):
@@ -69,7 +100,7 @@ def twoNumberSum(array, targetSum):
 ```
 
 Can you see why it is a bit faster? That's because the loops are not being fully iterated, instead, in the second loop, we are iterating it only after de first index, that's why it is using n1_index + 1. Think, if we already checked the sum of the first_num with all the other numbers, why would i check the sum of the second number with first_num again? It has already been checked.
-
+</div>
 <br>
 
 
@@ -78,6 +109,7 @@ ___
 <br>
 
 
+<div id="p1s3">
 
 #### Solution 3 (A cool idea):
 
@@ -100,7 +132,7 @@ def twoNumberSum(array, targetSum):
 ```
 
 The main idea in the above solution is to sort the array and assign it two pointers, one for the very left value (let's call it L) and another for the very right (let's call it R). As we sorted it, the very left is going to contain the smallest number, and the right one is going to take the biggest. The algorithm is going to sum L with R, if the sum is smaller than the targetSum, so we should walk one step with the left pointer, because if we want a bigger number, we should sum bigger numbers. Let's see a visual example:
- 
+
  ```
    L               R
 [-4, -1, 2, 3, 5, 9]
@@ -123,13 +155,14 @@ But what if our sum is greater than the targetSum? Let's assume that our targetS
 
 L + R = 1
 ```
-
+</div>
 <br>
 
 ___
 
 <br>
 
+<div id="p1s4s">
 
 ### Solution 4 (An elegant-not-phant one):
 
@@ -148,6 +181,7 @@ def twoNumberSum(array, targetSum):
 ```
 
 The above solution may look hard to understand at glance, but it is very simple. We have a map_ which stores every iterated number. The idea is to get the x that the iterated number needs to match the targetSum, this X is the potential_match variable. Look, the diff of targetSum and number is what we want to sum with number to achieve the targetSum. In every iteration we ask to map_ if it has that diff (the number we need to complete the sum), if so, that is the answer, if not, then we save the current iterated on map_, because it may be the lefting number of another iteration.
+</div>
 
 <br>
 <br>
@@ -159,6 +193,7 @@ ___
 <br>
 <br>
 
+<div id="p2">
 
 # Problem 2
 
@@ -183,6 +218,7 @@ Output example:
 ```
 4 // Because the first non-repeating character is C, which is in index 4
 ```
+</div>
 
 <br>
 
@@ -191,6 +227,7 @@ ___
 
 <br>
 
+<div id="p2s1">
 
 ### Solution 1 (Adorable):
 
@@ -204,7 +241,7 @@ def firstNonRepeatingCharacter(string):
 ```
 
 You may already got it, it is sooo simple. In order to find the first non-repeating number, whe just iterate through each character in the string counting the times it appears in the main string. If the iterated character appears once, then it is the right one.
-
+</div>
 <br>
 
 
@@ -212,6 +249,7 @@ ___
 
 <br>
 
+<div id="p2s2">
 
 ### Solution 2 (I'm deciding if i like it):
 
@@ -231,7 +269,7 @@ def firstNonRepeatingCharacter(string):
 ```
 
 In this solution we the main string twice, the idea is to find a character and then iterate again verifying if this character appears more in the string. If yes, we se found_duplicate to true, which triggers the first loop again, making it iterate the next character. Once it does not found the same character two times, found_duplicate will be False, making it return the index. If there is no non-repeating character, then it return -1 at the end of the loops.
-
+</div>
 
 <br>
 
@@ -240,6 +278,7 @@ ___
 
 <br>
 
+<div id="p2s3">
 
 ### Solution 3 (ª.ª):
 
@@ -259,7 +298,7 @@ def firstNonRepeatingCharacter(string):
 ```
 
 This one is simple too, it creates a hash map with all the characters of the string. This hash map is going to get the character as key and the times this character appears in the string as value. Then after inserting all the characters, it iterates the string again checking if the iterated character appears only once, if yes then returns its index, if not, return -1 at the end of the loops.
-
+</div>
 <br>
 <br>
 <br>
@@ -270,6 +309,7 @@ ___
 <br>
 <br>
 
+<div id="p3">
 
 # Problem 3
 
@@ -297,7 +337,7 @@ Output example:
 ```
 True
 ```
-
+</div>
 
 <br>
 
@@ -305,6 +345,8 @@ True
 ___
 
 <br>
+
+<div id="p3s1">
 
 ### Solution 1 (A very simple one):
 
@@ -317,12 +359,14 @@ def generateDocument(characters, document):
 ```
 
 It iterates the characters counting if the iterated one appears less in characters than it appears in document. If so, then the result if false, because we are not able to generate the document if we don't have all the characters. After the loop it returns True, because if there is no lefting character in characters string, then we have everything we need to generate.
-
+</div>
 <br>
 
 ___
 
 <br>
+
+<div id="p3s2">
 
 ### Solution 2 (A very simple one faster edition)
 
@@ -339,12 +383,13 @@ def generateDocument(characters, document):
 ```
 
 It is the same as solution 1, but it adds the iterated char in a set in order to do not iterate the same char multiple times, it saves time, that's why it is faster :-)
-
+</div>
 <br>
 
 ___
 
 <br>
+<div id="p3s3">
 
 ### Solution 3 (The famous hash map):
 
@@ -368,7 +413,7 @@ def generateDocument(characters, document):
 ```
 
 In the above solution it is created a hash map with the counts of each character. The first for loop created this count. Then, it checks each character in the document string, verifying if the iterated character does not exists in the map or its count is 0 (it exists but there is no enough occurrences to generate the document).
-
+</div>
 <br>
 <br>
 <br>
@@ -379,6 +424,7 @@ ___
 <br>
 <br>
 
+<div id="p4">
 
 # Problem 4
 
@@ -400,6 +446,7 @@ Output example:
 ```
 True
 ```
+</div>
 
 <br>
 
@@ -407,6 +454,8 @@ True
 ___
 
 <br>
+
+<div id="p4s1">
 
 ### Solution 1 (Nice way):
 
@@ -430,6 +479,7 @@ splited = [abc, d, cba]
 
 if L == the reverse of R (abc)? Yes
 ```
+</div>
 
 
 <br>
@@ -438,6 +488,7 @@ if L == the reverse of R (abc)? Yes
 ___
 
 <br>
+<div id="p4s2">
 
 ### Solution 2
 
@@ -474,13 +525,14 @@ a b c d c b a
 
 L == R? Yes. Then keep on doing this until check every character.
 ```
-
+</div>
 <br>
 
 
 ___
 
 <br>
+<div id="p4s3">
 
 ### Solution 3 (The best one)
 
@@ -494,13 +546,14 @@ def isPalindrome(string):
 ```
 
 Just reverse the string and check if the reversed is equal the normal, thats what we do in our mind when we see a palindrome word :) Quick and easy.
-
+</div>
 <br>
 
 
 ___
 
 <br>
+<div id="p4s4">
 
 ### Solution 4 (A recursive mode)
 
@@ -515,3 +568,4 @@ def isPalindrome(string, first_char=0):
 ```
 
 First it set two pointers, one for the first character and another for the last, then it checks if every character were checked, returning True if yes. Otherwise, it returns a boolean condition checking if both pointers are equal and calling itself again. If both pointers are different, then it will return False.
+</div>
