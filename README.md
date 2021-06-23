@@ -149,6 +149,16 @@ def twoNumberSum(array, targetSum):
 
 The above solution may look hard to understand at glance, but it is very simple. We have a map_ which stores every iterated number. The idea is to get the x that the iterated number needs to match the targetSum, this X is the potential_match variable. Look, the diff of targetSum and number is what we want to sum with number to achieve the targetSum. In every iteration we ask to map_ if it has that diff (the number we need to complete the sum), if so, that is the answer, if not, then we save the current iterated on map_, because it may be the lefting number of another iteration.
 
+<br>
+<br>
+<br>
+
+___
+
+<br>
+<br>
+<br>
+
 
 # Problem 2
 
