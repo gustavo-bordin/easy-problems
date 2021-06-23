@@ -34,7 +34,7 @@ ___
 
 
 
-## Solution 1 (Simple and direct):
+#### Solution 1 (Simple and direct):
 
 ```python
 def twoNumberSum(array, targetSum):
@@ -55,7 +55,7 @@ ___
 <br>
 
 
-## Solution 2 (A bit faster):
+#### Solution 2 (A bit faster):
 
 ```python
 def twoNumberSum(array, targetSum):
@@ -79,7 +79,7 @@ ___
 
 
 
-## Solution 3 (A cool idea):
+#### Solution 3 (A cool idea):
 
 ```python
 def twoNumberSum(array, targetSum):
@@ -131,7 +131,7 @@ ___
 <br>
 
 
-## Solution 4 (An elegant-not-phant one):
+### Solution 4 (An elegant-not-phant one):
 
 ```python
 def twoNumberSum(array, targetSum):
@@ -176,7 +176,13 @@ Output example:
 
 <br>
 
-## Solution 1 (Adorable):
+
+___
+
+<br>
+
+
+### Solution 1 (Adorable):
 
 ```python
 def firstNonRepeatingCharacter(string):
@@ -191,7 +197,13 @@ You may already got it, it is sooo simple. In order to find the first non-repeat
 
 <br>
 
-## Solution 2 (I'm deciding if i like it):
+
+___
+
+<br>
+
+
+### Solution 2 (I'm deciding if i like it):
 
 ```python
 def firstNonRepeatingCharacter(string):
@@ -213,7 +225,13 @@ In this solution we the main string twice, the idea is to find a character and t
 
 <br>
 
-## Solution 3 (ª.ª):
+
+___
+
+<br>
+
+
+### Solution 3 (ª.ª):
 
 ```python
 def firstNonRepeatingCharacter(string):
