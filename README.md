@@ -23,9 +23,28 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 
+
+
+# Introduction
+
+This project aims to show 25 easy logic exercises, involving string and array munipulations. The motivation came when i decided to solve a lot of logic problems, because that's what i like the most in programming. This project is still in progress, and once it is done i'll create the version 2 of it, but with medium logic exercises.
+
+<br><Br>
+
+You can run all the problems and see the results by typing:
+```bash
+$ python3 main.py
+```
+
+Or if you want to specify a problem, you can do:
+```bash
+$ python3 main.py <problem_number>
+```
+
+<br><br>
+<br><br>
+___
 <div id="p1">
 
 # Problem 1
