@@ -1,5 +1,3 @@
-print("Running PROBLEM 2 solutions", end="\n\n")
-
 # SOLUTION 1 -------------------------------------------------------------------
 
 def firstNonRepeatingCharacter(string):

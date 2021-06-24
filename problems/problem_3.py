@@ -1,5 +1,3 @@
-print("Running PROBLEM 3 solutions", end="\n\n")
-
 # SOLUTION 1 -------------------------------------------------------------------
 
 def generateDocument(characters, document):

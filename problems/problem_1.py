@@ -1,5 +1,3 @@
-print("Running PROBLEM 1 solutions", end="\n\n")
-
 # SOLUTION 1 -------------------------------------------------------------------
 
 def twoNumberSum(array, targetSum):

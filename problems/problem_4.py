@@ -1,5 +1,3 @@
-print("Running PROBLEM 4 solutions", end="\n\n")
-
 # SOLUTION 1 -------------------------------------------------------------------
 
 def isPalindrome(string):
