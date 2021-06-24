@@ -16,6 +16,9 @@
   - [Solution 2](#p4s2)
   - [Solution 3](#p4s3)
   - [Solution 4](#p4s4)
+- [Problem 5](#p5)
+  - [Solution 1](#p5s1)
+  - [Solution 2](#p5s2)
   
 <br>
 <br>
@@ -568,4 +571,127 @@ def isPalindrome(string, first_char=0):
 ```
 
 First it set two pointers, one for the first character and another for the last, then it checks if every character were checked, returning True if yes. Otherwise, it returns a boolean condition checking if both pointers are equal and calling itself again. If both pointers are different, then it will return False.
+</div>
+
+<br>
+<br>
+<br>
+
+___
+
+<br>
+<br>
+<br>
+
+<div id="p5">
+
+# Problem 5
+
+There's an algorithms tournament taking place in which teams of programmers
+compete against each other to solve algorithmic problems as fast as possible.
+Teams compete in a round robin, where each team faces off against all other
+teams. Only two teams compete against each other at a time, and for each
+competition, one team is designated the home team, while the other team is the
+away team. In each competition there's always one winner and one loser; there
+are no ties. A team receives 3 points if it wins and 0 points if it loses. The
+winner of the tournament is the team that receives the most amount of points.
+
+
+Given an array of pairs representing the teams that have competed against each
+other and an array containing the results of each competition, write a
+function that returns the winner of the tournament. The input arrays are named competitions and results, respectively. The competitions array has elements in the form of [homeTeam, awayTeam], where each team is a string of at most 30 characters representing the name of the team. The results  array contains information about the winner of each corresponding competition in the competitions array. Specifically, results[i] denotes the winner of competitions[i], where a 1 in the results  array means that the home team in the corresponding competition won and a 0  means that the away team won.
+<br>
+
+Input example: 
+```json
+competitions = [
+  ["HTML", "C#"],
+  ["C#", "Python"],
+  ["Python", "HTML"],
+]
+
+results = [0, 0, 1]
+```
+
+Output example: 
+```
+Python 
+// Because C# beats HTML, Python beats C# and Python beats HTML
+// Python - 6
+// C#     - 3
+// HTML   - 0
+```
+</div>
+
+<br>
+
+
+___
+
+<br>
+
+<div id="p5s1">
+
+### Solution 1 (Simple and ugly):
+
+```python
+def tournamentWinner(competitions, results):
+	map_ = {}
+	
+	for index, team in enumerate(competitions):
+		winner = team[1 if results[index] == 0 else 0]
+		
+		if winner not in map_:
+			map_[winner] = 0
+			
+		map_[winner] += 3
+	
+	highest_value = -1
+	highest_name = 0
+	for k,v in map_.items():
+		if v > highest_value:
+			highest_value = v
+			highest_name = k
+	
+	return highest_name
+```
+
+We create a map that is going to contain the team name as key and the team score as value. The competitions list is iterated getting the winner team of that round (If the element of the same index in results is 0, then the second team won, otherwise the victory is of the first team). Then it is created that winner team in the map if it is not created yet, and then added the points to it. After every team was iterated, we count the highest score and return the team that did it.
+</div>
+
+<br>
+
+
+___
+
+<br>
+
+<div id="p5s2">
+
+### Solution 2 (Beautiful, clean and readable)
+
+```python
+def tournamentWinner(competitions, results):
+	map_ = {'winning': {'score': 0, 'name': None}}
+	
+	def add_points(winner):
+		if winner not in map_:
+			map_[winner] = 0
+		
+		map_[winner] += 3
+		
+	def update_best_team(winner):
+		if map_[winner] > map_['winning']['score']:
+			map_['winning']['score'] = map_[winner]
+			map_['winning']['name'] = winner
+	
+	for index, team in enumerate(competitions):
+		winner = team[1 if results[index] == 0 else 0]
+		add_points(winner)
+		update_best_team(winner)
+		
+	return map_['winning']['name']
+```
+
+It is the same solution as above, but instead of iterating the map getting the highest score, we have a key named winning, and we assign the team which has the highest score on every iteration. It also was rewrote in order to be readable, following the best practices.
 </div>
